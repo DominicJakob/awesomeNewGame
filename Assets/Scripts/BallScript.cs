@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class BallScript : MonoBehaviour
 {
+    public GameManagerScript GameManager;
     public Rigidbody2D rb2d;
     public float maxInitialAngle = 1.67f;
     public float moveSpeed = 2f;
@@ -37,7 +38,8 @@ public class BallScript : MonoBehaviour
     {
         Scorezone scorezone = collision.GetComponent<Scorezone>();
         if (scorezone)
-        { 
+        {
+            GameManager.OnScoreZoneReached(scorezone.id);
             ResetBall();
             InitialPush();
         }
